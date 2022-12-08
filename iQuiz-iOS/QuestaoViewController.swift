@@ -39,17 +39,26 @@ class QuestaoViewController: UIViewController {
         navigationItem.hidesBackButton = true
         botoesResposta.forEach { botao in
             botao.layer.cornerRadius = 16.0
+            botao.titleLabel?.textAlignment = .center
         }
         labelTituloQuestao.numberOfLines = 0
         labelTituloQuestao.textAlignment = .center
     }
     
     @IBAction func botaoRespostaPressionado(_ sender: UIButton) {
-        print(sender.tag)
+        verificarResposta(sender.tag)
     }
     
+    func verificarResposta(_ respostaUsuario: Int) {
+        if respostaUsuario == questoes[numeroQuestao].respostaCorreta {
+            pontuacao += 1
+        }
+        if numeroQuestao < questoes.count - 1 {
+            numeroQuestao += 1
+            configurarQuestao()
+        }
+    }
     
-
     /*
     // MARK: - Navigation
 
