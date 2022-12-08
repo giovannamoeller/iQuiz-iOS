@@ -13,6 +13,7 @@
 		487C8B6B2941699E003C98E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C8B692941699E003C98E8 /* Main.storyboard */; };
 		487C8B6D294169A0003C98E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487C8B6C294169A0003C98E8 /* Assets.xcassets */; };
 		487C8B70294169A0003C98E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C8B6E294169A0003C98E8 /* LaunchScreen.storyboard */; };
+		487C8B78294209BA003C98E8 /* QuestaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C8B77294209BA003C98E8 /* QuestaoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		487C8B6C294169A0003C98E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		487C8B6F294169A0003C98E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		487C8B71294169A0003C98E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		487C8B77294209BA003C98E8 /* QuestaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestaoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				487C8B6C294169A0003C98E8 /* Assets.xcassets */,
 				487C8B6E294169A0003C98E8 /* LaunchScreen.storyboard */,
 				487C8B71294169A0003C98E8 /* Info.plist */,
+				487C8B77294209BA003C98E8 /* QuestaoViewController.swift */,
 			);
 			path = "iQuiz-iOS";
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				487C8B682941699E003C98E8 /* ViewController.swift in Sources */,
 				487C8B642941699E003C98E8 /* AppDelegate.swift in Sources */,
 				487C8B662941699E003C98E8 /* SceneDelegate.swift in Sources */,
+				487C8B78294209BA003C98E8 /* QuestaoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
