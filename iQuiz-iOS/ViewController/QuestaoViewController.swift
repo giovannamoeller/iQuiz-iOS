@@ -15,11 +15,9 @@ class QuestaoViewController: UIViewController {
         Questao(titulo: "O que é um booleano?", respostas: ["Um valor que pode ser verdadeiro ou falso", "Um valor que só pode ser verdadeiro", "Um valor que só pode ser falso"], respostaCorreta: 0)
     ]
     
-    var numeroQuestao: Int = 0
-    var pontuacao: Int = 0
+    var quiz = Quiz()
 
     @IBOutlet weak var labelTituloQuestao: UILabel!
-    
     @IBOutlet var botoesResposta: [UIButton]!
     
     override func viewDidLoad() {
@@ -29,10 +27,10 @@ class QuestaoViewController: UIViewController {
     }
     
     @objc func configurarQuestao() {
-        labelTituloQuestao.text = questoes[numeroQuestao].titulo
+        labelTituloQuestao.text = quiz.tituloQuestao
         botoesResposta.forEach { botao in
             botao.backgroundColor = UIColor(red: 116/255, green: 50/255, blue: 255/255, alpha: 1.0)
-            botao.setTitle(questoes[numeroQuestao].respostas[botao.tag], for: .normal)
+            botao.setTitle(questoes[quiz.numeroQuestao].respostas[botao.tag], for: .normal)
         }
     }
     
@@ -47,29 +45,25 @@ class QuestaoViewController: UIViewController {
     }
     
     @IBAction func botaoRespostaPressionado(_ sender: UIButton) {
-        if verificarRespostaCorreta(sender.tag) {
-            pontuacao += 1
+        if quiz.verificaQuestao(respostaUsuario: sender.tag) {
+            quiz.marcaPonto()
             sender.backgroundColor = UIColor(red: 11/255, green: 161/255, blue: 53/255, alpha: 1.0)
         } else {
             sender.backgroundColor = UIColor(red: 211/255, green: 17/255, blue: 17/255, alpha: 1.0)
         }
         
-        if numeroQuestao < questoes.count - 1 {
-            numeroQuestao += 1
-            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(configurarQuestao), userInfo: nil, repeats: false)
-        } else {
+        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(configurarQuestao), userInfo: nil, repeats: false)
+        
+        if quiz.finalizado {
             performSegue(withIdentifier: "irParaTelaDesempenho", sender: nil)
+        } else {
+            quiz.proximaQuestao()
         }
-    }
-    
-    func verificarRespostaCorreta(_ respostaUsuario: Int) -> Bool {
-        return respostaUsuario == questoes[numeroQuestao].respostaCorreta
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let desempenhoVC = segue.destination as? DesempenhoViewController else { return }
-        desempenhoVC.pontuacao = pontuacao
-        desempenhoVC.totalQuestoes = questoes.count
+        desempenhoVC.quiz = quiz
     }
     
     /*
