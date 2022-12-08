@@ -9,6 +9,10 @@ import UIKit
 
 class QuestaoViewController: UIViewController {
 
+    @IBOutlet weak var labelTituloQuestao: UILabel!
+    
+    @IBOutlet var botoesResposta: [UIButton]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configurarLayout()
@@ -16,7 +20,15 @@ class QuestaoViewController: UIViewController {
     
     func configurarLayout() {
         navigationItem.hidesBackButton = true
+        botoesResposta.forEach { botao in
+            botao.layer.cornerRadius = 16.0
+        }
     }
+    
+    @IBAction func botaoRespostaPressionado(_ sender: UIButton) {
+        print(sender.tag)
+    }
+    
     
 
     /*
