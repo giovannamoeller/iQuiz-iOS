@@ -35,6 +35,11 @@ struct Quiz {
         return Quiz.questoes[numeroQuestao].respostaCorreta == respostaUsuario
     }
     
+    func calculaPercentualFinal() -> String {
+        let porcentagem = (pontuacao * 100) / totalQuestoes
+        return "\(porcentagem)%"
+    }
+    
 }
 
 extension Quiz {

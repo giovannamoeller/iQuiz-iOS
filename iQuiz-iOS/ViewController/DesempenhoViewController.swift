@@ -9,8 +9,7 @@ import UIKit
 
 class DesempenhoViewController: UIViewController {
 
-    var pontuacao: Int = 0
-    var totalQuestoes: Int = 0
+    var quiz: Quiz?
     
     @IBOutlet weak var botaoReiniciarQuiz: UIButton!
     @IBOutlet weak var labelTotalAcertos: UILabel!
@@ -29,13 +28,9 @@ class DesempenhoViewController: UIViewController {
     }
     
     func configurarDesempenho() {
-        labelTotalAcertos.text = "Você acertou \(pontuacao) de \(totalQuestoes) questões."
-        labelPercentualFinal.text = "Percentual final: \(calculaPercentual())"
-    }
-    
-    func calculaPercentual() -> String {
-        let percentual = (pontuacao * 100) / totalQuestoes
-        return "\(percentual)%"
+        guard let quiz = quiz else { return }
+        labelTotalAcertos.text = "Você acertou \(quiz.pontuacao) de \(quiz.totalQuestoes) questões."
+        labelPercentualFinal.text = "Percentual final: \(quiz.calculaPercentualFinal())"
     }
     
 

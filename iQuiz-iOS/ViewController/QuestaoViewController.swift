@@ -63,8 +63,7 @@ class QuestaoViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let desempenhoVC = segue.destination as? DesempenhoViewController else { return }
-        desempenhoVC.pontuacao = quiz.pontuacao
-        desempenhoVC.totalQuestoes = quiz.totalQuestoes
+        desempenhoVC.quiz = quiz
     }
     
     /*
