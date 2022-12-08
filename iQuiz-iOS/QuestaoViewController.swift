@@ -8,6 +8,15 @@
 import UIKit
 
 class QuestaoViewController: UIViewController {
+    
+    let questoes: [Questao] = [
+        Questao(titulo: "O que é código condicional?", respostas: ["Um bloco de comando", "Um comando que só será executado dele é verdadeiro", "Um comando que só será executado se for falso"], respostaCorreta: 0),
+        Questao(titulo: "O que é debugging?", respostas: ["Erros nos códigos", "Processo de encontrar e corrigir erros", "Criar uma sequência correta de comandos"], respostaCorreta: 1),
+        Questao(titulo: "O que é um booleano?", respostas: ["Um valor que pode ser verdadeiro ou falso", "Um valor que só pode ser verdadeiro", "Um valor que só pode ser falso"], respostaCorreta: 0)
+    ]
+    
+    var numeroQuestao: Int = 0
+    var pontuacao: Int = 0
 
     @IBOutlet weak var labelTituloQuestao: UILabel!
     
@@ -16,6 +25,14 @@ class QuestaoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurarLayout()
+        configurarQuestao()
+    }
+    
+    func configurarQuestao() {
+        labelTituloQuestao.text = questoes[numeroQuestao].titulo
+        botoesResposta.forEach { botao in
+            botao.setTitle(questoes[numeroQuestao].respostas[botao.tag], for: .normal)
+        }
     }
     
     func configurarLayout() {
@@ -23,6 +40,8 @@ class QuestaoViewController: UIViewController {
         botoesResposta.forEach { botao in
             botao.layer.cornerRadius = 16.0
         }
+        labelTituloQuestao.numberOfLines = 0
+        labelTituloQuestao.textAlignment = .center
     }
     
     @IBAction func botaoRespostaPressionado(_ sender: UIButton) {
